@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
 const Tasks = require("./tasks-model.js");
+const restricted = require("../middleware/restricted-middleware.js");
 
-router.post("/", validateTaskContent, (req, res) => {
+router.post("/", restricted, validateTaskContent, (req, res) => {
   Tasks.addTask(req.body)
     .then(task => {
       res.status(201).json(task);
@@ -34,20 +35,26 @@ router.get("/:id", verifyTaskId, (req, res) => {
     });
 });
 
-router.put("/:id", verifyTaskId, validateTaskContent, (req, res) => {
-  const id = req.params.id;
-  const changes = req.body;
+router.put(
+  "/:id",
+  restricted,
+  verifyTaskId,
+  validateTaskContent,
+  (req, res) => {
+    const id = req.params.id;
+    const changes = req.body;
 
-  Tasks.updateTask(id, changes)
-    .then(updatedTask => {
-      res.status(201).json(updatedTask);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-});
+    Tasks.updateTask(id, changes)
+      .then(updatedTask => {
+        res.status(201).json(updatedTask);
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  }
+);
 
-router.delete("/:id", verifyTaskId, (req, res) => {
+router.delete("/:id", restricted, verifyTaskId, (req, res) => {
   const id = req.params.id;
 
   Tasks.deleteTask(id)

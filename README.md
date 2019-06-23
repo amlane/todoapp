@@ -23,7 +23,9 @@
 - [x] Test all endpoints on Postman
 - [x] add middleware to protect username, pw and tasks from being empty on POST and PUT
 - [x] add middleware to protect any endpoint that requires an ID
-- [ ] Update README with endpoints table
+- [x] add middleware to protect routes that require login
+- [x] Create a postman doc for endpoints to update README with
+- [ ] Update README with endpoints from Postman
 
 ## Next Steps
 
