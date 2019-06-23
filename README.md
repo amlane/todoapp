@@ -5,8 +5,8 @@
 - [x] Create Database design
 - [x] Create environment and add dependencies
 - [x] Create basic server
-- [ ] Add tables for user
-- [ ] Add table for tasks/to dos
+- [x] Add table for users
+- [x] Add table for tasks/to dos
 - [ ] Build Router/endpoints and Model/helpers for:
 
 * POST /register
@@ -25,7 +25,7 @@
 
 - [ ] Create design file in Figma
 - [ ] Create React App
-- [ ] Set Up User and login
+- [ ] Set up new user and login
 - [ ] Set up to do list display
 - [ ] Set up create new to do page
 - [ ] Add edit/delete to do feature
