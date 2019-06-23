@@ -13,12 +13,12 @@
 - [x] POST /register
 - [x] POST /login
 - [x] GET /users
-- [x] GET /userById/:id
+- [x] GET /users/:id
+- [ ] GET users/:id/tasks
 - [ ] POST /task
-- [ ] GET /taskById/:id
-- [ ] PUT /task/:id
-- [ ] DELETE /tasks:id
-- [ ] GET /:id/tasksByUserId
+- [ ] GET /tasks/:id
+- [ ] PUT /tasks/:id
+- [ ] DELETE /tasks/:id
 - [ ] Test all endpoints on Postman
 
 ## Next Steps
