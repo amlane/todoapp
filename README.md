@@ -9,15 +9,15 @@
 - [x] Add table for tasks/to dos
 - [ ] Build Router/endpoints and Model/helpers for:
 
-* POST /register
-* POST /login
-* GET /users
-* GET /userById/:id
-* POST /task
-* GET /taskById/:id
-* PUT /task/:id
-* DELETE /tasks:id
-* GET /:id/tasksByUserId
+- [ ] POST /register
+- [ ] POST /login
+- [ ] GET /users
+- [ ] GET /userById/:id
+- [ ] POST /task
+- [ ] GET /taskById/:id
+- [ ] PUT /task/:id
+- [ ] DELETE /tasks:id
+- [ ] GET /:id/tasksByUserId
 
 - [ ] Test all endpoints on Postman
 
