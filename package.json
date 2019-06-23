@@ -1,0 +1,12 @@
+{
+  "name": "todo_app",
+  "version": "1.0.0",
+  "description": "- [x] Create Database design\r - [ ] Create basic server with migration\r - [ ] Add authentication and tables for user\r - [ ] Add table for tasks/to dos\r - [ ] Build endpoints:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
