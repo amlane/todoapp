@@ -3,6 +3,7 @@
 ## First steps
 
 - [x] Create Database design
+- [ ] Create environment and add dependencies
 - [ ] Create basic server with migration
 - [ ] Add authentication and tables for user
 - [ ] Add table for tasks/to dos
