@@ -4,7 +4,8 @@ module.exports = {
   add,
   find,
   findBy,
-  findById
+  findById,
+  getTasksByUserId
 };
 
 function find() {
