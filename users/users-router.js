@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const Users = require("./users-model.js");
+const restricted = require("../middleware/restricted-middleware.js");
 
 router.get("/", (req, res) => {
   Users.find()
@@ -24,7 +25,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.get("/:id/tasks", (req, res) => {
+router.get("/:id/tasks", restricted, (req, res) => {
   const id = req.params.id;
 
   Users.findById(id)

@@ -23,6 +23,7 @@
 - [x] Test all endpoints on Postman
 - [ ] add middleware to protect end points/db constraints
 - [ ] add middleware to protect routes from having no users
+- [ ] Update README with endpoints table
 
 ## Next Steps
 
