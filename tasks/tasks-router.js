@@ -47,4 +47,16 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+
+  Tasks.deleteTask(id)
+    .then(deletedTask => {
+      res.status(200).json({ message: "Task successfully deleted." });
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

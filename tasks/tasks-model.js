@@ -4,7 +4,8 @@ module.exports = {
   getTasks,
   addTask,
   getTasksById,
-  updateTask
+  updateTask,
+  deleteTask
 };
 
 function getTasks() {
@@ -25,4 +26,10 @@ function updateTask(id, changes) {
   return db("tasks")
     .where({ id })
     .update(changes);
+}
+
+function deleteTask(id) {
+  return db("tasks")
+    .where({ id })
+    .del();
 }

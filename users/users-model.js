@@ -26,3 +26,7 @@ function findById(id) {
     .where({ id })
     .first();
 }
+
+function getTasksByUserId(id) {
+  return db("tasks").where({ "tasks.user_id": id });
+}

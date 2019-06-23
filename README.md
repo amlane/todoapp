@@ -17,8 +17,8 @@
 - [x] POST /tasks
 - [x] GET /tasks
 - [x] GET /tasks/:id
-- [ ] PUT /tasks/:id
-- [ ] DELETE /tasks/:id
+- [x] PUT /tasks/:id
+- [x] DELETE /tasks/:id
 - [ ] GET users/:id/tasks
 - [ ] Test all endpoints on Postman
 - [ ] add middleware to protect end points/db constraints
