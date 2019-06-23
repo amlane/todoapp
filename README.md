@@ -7,7 +7,8 @@
 - [x] Create basic server
 - [x] Add table for users
 - [x] Add table for tasks/to dos
-- [ ] Build Router/endpoints and Model/helpers for:
+
+## Build Router/endpoints and Model/helpers for:
 
 - [x] POST /register
 - [x] POST /login
@@ -18,7 +19,6 @@
 - [ ] PUT /task/:id
 - [ ] DELETE /tasks:id
 - [ ] GET /:id/tasksByUserId
-
 - [ ] Test all endpoints on Postman
 
 ## Next Steps
