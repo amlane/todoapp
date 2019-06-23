@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", verifyTaskId, (req, res) => {
   const id = req.params.id;
 
   Tasks.getTasksById(id)
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", validateTaskContent, (req, res) => {
+router.put("/:id", verifyTaskId, validateTaskContent, (req, res) => {
   const id = req.params.id;
   const changes = req.body;
 
@@ -47,7 +47,7 @@ router.put("/:id", validateTaskContent, (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", verifyTaskId, (req, res) => {
   const id = req.params.id;
 
   Tasks.deleteTask(id)
@@ -67,6 +67,23 @@ function validateTaskContent(req, res, next) {
   } else {
     next();
   }
+}
+
+function verifyTaskId(req, res, next) {
+  const id = req.params.id;
+
+  Tasks.getTasksById(id)
+    .then(item => {
+      if (item) {
+        req.item = item;
+        next();
+      } else {
+        res.status(404).json({ message: "Task doesn't exist." });
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
 }
 
 module.exports = router;
