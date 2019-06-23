@@ -14,7 +14,10 @@ router.post("/register", (req, res) => {
   Users.add(user)
     .then(saved => {
       const token = generateToken(saved);
-      res.status(201).json({ saved, token });
+      res.status(201).json({
+        message: `What do you need to do today, ${saved.username}?`,
+        token
+      });
     })
     .catch(error => {
       res.status(500).json(error);
@@ -32,7 +35,7 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
 
         res.status(200).json({
-          message: `Welcome ${user.username}!`,
+          message: `What do you need to do today, ${user.username}?`,
           token //return the token upon login
         });
       } else {
