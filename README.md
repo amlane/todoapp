@@ -29,13 +29,13 @@
 
 ## Next Steps
 
-- [ ] Create design file in Figma
 - [ ] Create React App
 - [ ] Set up new user and login
 - [ ] Set up to do list display
 - [ ] Set up create new to do page
 - [ ] Add edit/delete to do feature
 - [ ] add clear completed/show completed/delete completed feature
+- [ ] Create design file in Figma
 - [ ] style app
 
 ## Final Steps
