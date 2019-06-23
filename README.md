@@ -14,12 +14,15 @@
 - [x] POST /login
 - [x] GET /users
 - [x] GET /users/:id
-- [ ] GET users/:id/tasks
-- [ ] POST /task
-- [ ] GET /tasks/:id
+- [x] POST /tasks
+- [x] GET /tasks
+- [x] GET /tasks/:id
 - [ ] PUT /tasks/:id
 - [ ] DELETE /tasks/:id
+- [ ] GET users/:id/tasks
 - [ ] Test all endpoints on Postman
+- [ ] add middleware to protect end points/db constraints
+- [ ] add middleware to protect routes from having no users
 
 ## Next Steps
 
