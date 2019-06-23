@@ -21,8 +21,8 @@
 - [x] DELETE /tasks/:id
 - [x] GET users/:id/tasks
 - [x] Test all endpoints on Postman
-- [ ] add middleware to protect username, pw and tasks from being empty on POST and PUT
-- [x] add middleware to protect GET/users/:id/tasks from having no users
+- [x] add middleware to protect username, pw and tasks from being empty on POST and PUT
+- [x] add middleware to protect any endpoint that requires an ID
 - [ ] Update README with endpoints table
 
 ## Next Steps
