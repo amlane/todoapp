@@ -34,4 +34,17 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const id = req.params.id;
+  const changes = req.body;
+
+  Tasks.updateTask(id, changes)
+    .then(updatedTask => {
+      res.status(201).json(updatedTask);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
