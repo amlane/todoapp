@@ -9,10 +9,10 @@
 - [x] Add table for tasks/to dos
 - [ ] Build Router/endpoints and Model/helpers for:
 
-- [ ] POST /register
-- [ ] POST /login
-- [ ] GET /users
-- [ ] GET /userById/:id
+- [x] POST /register
+- [x] POST /login
+- [x] GET /users
+- [x] GET /userById/:id
 - [ ] POST /task
 - [ ] GET /taskById/:id
 - [ ] PUT /task/:id
