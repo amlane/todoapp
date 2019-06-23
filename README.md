@@ -19,8 +19,8 @@
 - [x] GET /tasks/:id
 - [x] PUT /tasks/:id
 - [x] DELETE /tasks/:id
-- [ ] GET users/:id/tasks
-- [ ] Test all endpoints on Postman
+- [x] GET users/:id/tasks
+- [x] Test all endpoints on Postman
 - [ ] add middleware to protect end points/db constraints
 - [ ] add middleware to protect routes from having no users
 
