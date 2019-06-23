@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const Tasks = require("./tasks-model.js");
 
-router.post("/", (req, res) => {
+router.post("/", validateTaskContent, (req, res) => {
   Tasks.addTask(req.body)
     .then(task => {
       res.status(201).json(task);
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", validateTaskContent, (req, res) => {
   const id = req.params.id;
   const changes = req.body;
 
@@ -58,5 +58,15 @@ router.delete("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// ---------------------- Custom Middleware ---------------------- //
+
+function validateTaskContent(req, res, next) {
+  if (!req.body.task) {
+    res.status(400).json({ message: "Task field is required." });
+  } else {
+    next();
+  }
+}
 
 module.exports = router;

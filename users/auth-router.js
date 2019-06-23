@@ -6,7 +6,7 @@ const secrets = require("../config/secrets.js");
 const Users = require("./users-model.js");
 
 // for endpoints beginning with /api/auth
-router.post("/register", (req, res) => {
+router.post("/register", validateUserContent, (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
   user.password = hash;
@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", validateUserContent, (req, res) => {
   let { username, password } = req.body;
 
   Users.findBy({ username })
@@ -47,6 +47,8 @@ router.post("/login", (req, res) => {
     });
 });
 
+// ---------------------- Generate Token ---------------------- //
+
 function generateToken(user) {
   const payload = {
     subject: user.id, // standard claim = sub
@@ -56,6 +58,18 @@ function generateToken(user) {
     expiresIn: "7d"
   };
   return jwt.sign(payload, secrets.jwtSecret, options);
+}
+
+// ---------------------- Custom Middleware ---------------------- //
+
+function validateUserContent(req, res, next) {
+  if (!req.body.username || !req.body.password) {
+    res
+      .status(400)
+      .json({ message: "Username & password fields are required." });
+  } else {
+    next();
+  }
 }
 
 module.exports = router;
