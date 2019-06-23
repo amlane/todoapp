@@ -3,11 +3,11 @@
 ## First steps
 
 - [x] Create Database design
-- [ ] Create environment and add dependencies
-- [ ] Create basic server with migration
-- [ ] Add authentication and tables for user
+- [x] Create environment and add dependencies
+- [x] Create basic server
+- [ ] Add tables for user
 - [ ] Add table for tasks/to dos
-- [ ] Build endpoints:
+- [ ] Build Router/endpoints and Model/helpers for:
 
 * POST /register
 * POST /login
