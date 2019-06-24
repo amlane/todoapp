@@ -24,7 +24,7 @@ class SignIn extends React.Component {
         // console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.user.id);
-        // this.props.history.push("/tasks");
+        this.props.history.push("/tasks");
       })
       .catch(err => {
         console.log(err);
