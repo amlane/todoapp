@@ -15,6 +15,7 @@ router.post("/register", validateUserContent, (req, res) => {
     .then(saved => {
       const token = generateToken(saved);
       res.status(201).json({
+        saved,
         message: `What do you need to do today, ${saved.username}?`,
         token
       });
@@ -35,6 +36,7 @@ router.post("/login", validateUserContent, (req, res) => {
         const token = generateToken(user);
 
         res.status(200).json({
+          user,
           message: `What do you need to do today, ${user.username}?`,
           token //return the token upon login
         });
