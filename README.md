@@ -3,36 +3,43 @@
 ## First steps
 
 - [x] Create Database design
-- [ ] Create basic server with migration
-- [ ] Add authentication and tables for user
-- [ ] Add table for tasks/to dos
-- [ ] Build endpoints:
+- [x] Create environment and add dependencies
+- [x] Create basic server
+- [x] Add table for users
+- [x] Add table for tasks/to dos
 
-* POST /register
-* POST /login
-* GET /users
-* GET /userById/:id
-* POST /task
-* GET /taskById/:id
-* PUT /task/:id
-* DELETE /tasks:id
-* GET /:id/tasksByUserId
+## Build Router/endpoints and Model/helpers for:
 
-- [ ] Test all endpoints on Postman
+- [x] POST /register
+- [x] POST /login
+- [x] GET /users
+- [x] GET /users/:id
+- [x] POST /tasks
+- [x] GET /tasks
+- [x] GET /tasks/:id
+- [x] PUT /tasks/:id
+- [x] DELETE /tasks/:id
+- [x] GET users/:id/tasks
+- [x] Test all endpoints on Postman
+- [x] add middleware to protect username, pw and tasks from being empty on POST and PUT
+- [x] add middleware to protect any endpoint that requires an ID
+- [x] add middleware to protect routes that require login
+- [x] Create a postman doc for endpoints to update README with
+- [ ] Update README with endpoints from Postman
 
 ## Next Steps
 
-- [ ] Create design file in Figma
 - [ ] Create React App
-- [ ] Set Up User and login
+- [ ] Set up new user and login
 - [ ] Set up to do list display
 - [ ] Set up create new to do page
 - [ ] Add edit/delete to do feature
 - [ ] add clear completed/show completed/delete completed feature
+- [ ] Create design file in Figma
 - [ ] style app
 
 ## Final Steps
 
 - [ ] Deploy back-end on heroku using postgres
 - [ ] Deploy front-end on netlify
-- [ ] Test production
+- [ ] Test production (maybe lol)
