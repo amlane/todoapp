@@ -29,7 +29,7 @@
 
 ## Next Steps
 
-- [ ] Create React App
+- [x] Create React App
 - [ ] Set up new user and login
 - [ ] Set up to do list display
 - [ ] Set up create new to do page
