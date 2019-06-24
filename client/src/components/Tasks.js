@@ -3,9 +3,8 @@ import { axiosWithAuth } from "./auth/axiosWithAuth";
 
 class Tasks extends React.Component {
   state = {
-    task: "",
-    completed: null,
-    user_id: null
+    user: "",
+    tasks: []
   };
 
   componentDidMount() {
@@ -15,6 +14,10 @@ class Tasks extends React.Component {
       .get(`http://localhost:4700/users/${userId}/tasks`)
       .then(res => {
         console.log(res);
+        this.setState({
+          user: res.data.username,
+          tasks: res.data.tasks
+        });
       })
       .catch(err => {
         console.log(err.response);
@@ -22,7 +25,16 @@ class Tasks extends React.Component {
   }
 
   render() {
-    return <div>Hello World</div>;
+    return (
+      <div>
+        <p>What do you need to do today, {this.state.user}?</p>
+        <ul>
+          {this.state.tasks.map(task => {
+            return <li key={task.id}>{task.task}</li>;
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 
