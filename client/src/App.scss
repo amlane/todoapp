@@ -1,20 +1,40 @@
 .App {
   text-align: center;
-  max-width: 800px;
   margin: 0 auto;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+  background: #404040;
+}
+
+h1 {
+  margin: 2%;
+  text-transform: uppercase;
 }
 
 a {
   text-decoration: none;
-  color: #fc2a2a;
+  color: #147bed;
 }
 
 nav {
-  padding: 2%;
+  padding: 0 5%;
+  width: 40%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+nav a {
+  padding: 0 5%;
+  color: #f26b3a;
 }
 
 h2 {
-  color: #f26b3a;
+  color: #d18037;
   padding: 3%;
 }
 
@@ -52,15 +72,15 @@ p {
   align-items: center;
   border: 1px solid #dadada;
   width: 300px;
-  margin: 0 auto;
+  margin: 5% auto;
   padding: 6% 0;
 }
 
 .signin-btn {
   background: none;
-  border: 1px solid #f26b3a;
-  color: #f26b3a;
-  padding: 5px 8px;
+  border: 1px solid #e72727;
+  color: #e72727;
+  padding: 5px 15px;
   border-radius: 5px;
   margin: 5% 0;
 }

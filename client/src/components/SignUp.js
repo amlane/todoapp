@@ -24,7 +24,7 @@ class SignUp extends React.Component {
         // console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.saved.id);
-        // this.props.history.push("/tasks");
+        this.props.history.push("/tasks");
       })
       .catch(err => {
         console.log(err);
@@ -33,7 +33,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <header className="App-header">
+      <section className="App-header">
         <form onSubmit={this.handleSubmit} className="login-form">
           <h2>Create Account</h2>
           <div className="input-container">
@@ -63,7 +63,7 @@ class SignUp extends React.Component {
             Already a User? <NavLink to="/signin">Log In</NavLink>
           </p>
         </form>
-      </header>
+      </section>
     );
   }
 }

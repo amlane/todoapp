@@ -33,7 +33,7 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <header className="App-header">
+      <section className="App-header">
         <form onSubmit={this.handleSubmit} className="login-form">
           <h2>Log In</h2>
           <div className="input-container">
@@ -60,10 +60,10 @@ class SignIn extends React.Component {
             Log In
           </button>
           <p className="new-user-signup">
-            Not a user yet? <NavLink to="/signin">Sign Up</NavLink>
+            Not a user yet? <NavLink to="/signup">Sign Up</NavLink>
           </p>
         </form>
-      </header>
+      </section>
     );
   }
 }
