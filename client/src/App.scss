@@ -12,7 +12,7 @@ header {
 }
 
 h1 {
-  margin: 2%;
+  margin: 2% 10%;
   text-transform: uppercase;
 }
 
@@ -23,9 +23,10 @@ a {
 
 nav {
   padding: 0 5%;
-  width: 40%;
+  width: 50%;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 12px;
 }
 
 nav a {
@@ -52,7 +53,7 @@ button:focus {
   outline: none;
 }
 
-input {
+.auth-input {
   border: none;
   border-bottom: 1px solid #dadada;
   background: none;
@@ -87,4 +88,43 @@ p {
 
 button:hover {
   cursor: pointer;
+}
+
+h3 {
+  color: #279b70;
+  padding: 2% 0;
+}
+
+ul {
+  list-style-type: none;
+  width: 375px;
+  margin: 0 auto;
+  text-align: start;
+}
+
+li {
+  background: #404040;
+  padding: 2% 4%;
+  margin: 1%;
+  border-radius: 5px;
+  color: #d18037;
+}
+
+.add-new-task {
+  width: 305px;
+  border: none;
+  background: #404040;
+  padding: 1%;
+  border-radius: 5px;
+  color: #147bed;
+  font-size: 15px;
+}
+
+.add-btn {
+  padding: 8px 12px;
+  background: #f26b3a;
+  color: white;
+  border: 1px solid #f26b3a;
+  border-radius: 50%;
+  margin: 0 15px;
 }

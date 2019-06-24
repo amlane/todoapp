@@ -30,7 +30,7 @@
 ## Next Steps
 
 - [x] Create React App
-- [ ] Set up new user and login
+- [x] Set up new user and login
 - [ ] Set up to do list display
 - [ ] Set up create new to do page
 - [ ] Add edit/delete to do feature

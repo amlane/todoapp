@@ -39,6 +39,7 @@ class SignUp extends React.Component {
           <div className="input-container">
             <label>username</label>
             <input
+              className="auth-input"
               value={this.state.username}
               type="text"
               required
@@ -49,6 +50,7 @@ class SignUp extends React.Component {
           <div className="input-container">
             <label>password</label>
             <input
+              className="auth-input"
               value={this.state.password}
               type="password"
               required

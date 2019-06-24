@@ -5,6 +5,7 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 import "./App.scss";
 
 function App() {
@@ -15,11 +16,13 @@ function App() {
         <nav>
           <NavLink to="/signup">Sign Up</NavLink>{" "}
           <NavLink to="/signin">Sign In</NavLink>{" "}
+          <NavLink to="/tasks">Tasks</NavLink>{" "}
         </nav>
       </header>
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
       <PrivateRoute path="/tasks" component={Tasks} />
+      <PrivateRoute path="/tasks" component={AddTask} />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
 
+import "../App.scss";
+
 class Tasks extends React.Component {
   state = {
     user: "",
@@ -27,7 +29,7 @@ class Tasks extends React.Component {
   render() {
     return (
       <div>
-        <p>What do you need to do today, {this.state.user}?</p>
+        <h3>What do you need to do today, {this.state.user}?</h3>
         <ul>
           {this.state.tasks.map(task => {
             return <li key={task.id}>{task.task}</li>;
