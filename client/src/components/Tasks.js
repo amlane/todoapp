@@ -1,5 +1,6 @@
 import React from "react";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
+import AddTask from "../components/AddTask";
 
 import "../App.scss";
 
@@ -10,6 +11,10 @@ class Tasks extends React.Component {
   };
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     const userId = localStorage.getItem("user_id");
 
     axiosWithAuth()
@@ -24,7 +29,7 @@ class Tasks extends React.Component {
       .catch(err => {
         console.log(err.response);
       });
-  }
+  };
 
   render() {
     return (
@@ -35,6 +40,7 @@ class Tasks extends React.Component {
             return <li key={task.id}>{task.task}</li>;
           })}
         </ul>
+        <AddTask getData={this.getData} />
       </div>
     );
   }
