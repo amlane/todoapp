@@ -119,7 +119,6 @@ class Tasks extends React.Component {
                         : () => this.startEdit(task.id)
                     }
                   />{" "}
-                  {/* <button onClick={this.handleSubmit}>S</button> */}
                   <i
                     className="far fa-trash-alt"
                     onClick={() => this.deleteTask(task.id)}

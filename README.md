@@ -34,7 +34,8 @@
 - [x] Set up to do list display
 - [x] Set up create new to do page
 - [x] Add delete to do feature
-- [ ] Add edit to do feature
+- [x] Add edit to do feature
+- [ ] Add a logout
 - [ ] add clear completed/show completed/delete completed feature
 - [ ] Create design file in Figma
 - [ ] style app
