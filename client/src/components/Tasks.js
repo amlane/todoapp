@@ -9,14 +9,18 @@ class Tasks extends React.Component {
     user: "",
     tasks: [],
     id: null,
-    task: "",
-    user_id: null
+    newTask: {
+      task: "",
+      user_id: null
+    }
   };
 
   componentDidMount() {
     this.getData();
     this.setState({
-      user_id: localStorage.getItem("user_id")
+      newTask: {
+        user_id: localStorage.getItem("user_id")
+      }
     });
   }
 
@@ -49,34 +53,42 @@ class Tasks extends React.Component {
   };
 
   startEdit = id => {
-    this.setState(
-      {
-        id: id
-      },
-      () => console.log(this.state.id)
-    );
+    this.setState({
+      id: id
+    });
   };
 
   handleInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      newTask: {
+        [e.target.name]: e.target.value
+      }
     });
   };
 
-  editTask = (id, updatedTask) => {
-    console.log("edited", this.state.task, this.state.user_id);
+  handleSubmit = e => {
+    e.preventDefault();
+    this.editTask(this.state.newTask, this.state.id);
+  };
+
+  editTask = (updatedTask, id) => {
+    console.log("new task", updatedTask);
     axiosWithAuth()
       .put(`http://localhost:4700/tasks/${id}`, updatedTask)
       .then(res => {
+        console.log(res);
         this.setState(
           {
-            id: null
+            id: null,
+            newTask: {
+              task: ""
+            }
           },
           () => this.getData()
         );
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response);
       });
   };
 
@@ -92,7 +104,7 @@ class Tasks extends React.Component {
                   <input
                     placeholder={task.task}
                     name="task"
-                    value={this.state.task}
+                    value={this.state.newTask.task}
                     onChange={this.handleInput}
                   />
                 ) : (
@@ -103,16 +115,7 @@ class Tasks extends React.Component {
                     className="fas fa-pencil-alt"
                     onClick={() => this.startEdit(task.id)}
                   />{" "}
-                  <button
-                    onClick={() =>
-                      this.editTask(
-                        task.id,
-                        (this.state.task, this.state.user_id)
-                      )
-                    }
-                  >
-                    S
-                  </button>
+                  <button onClick={this.handleSubmit}>S</button>
                   <i
                     className="far fa-trash-alt"
                     onClick={() => this.deleteTask(task.id)}
