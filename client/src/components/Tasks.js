@@ -58,7 +58,7 @@ class Tasks extends React.Component {
     });
   };
 
-  handleInput = e => {
+  handleEditInput = e => {
     this.setState({
       newTask: {
         [e.target.name]: e.target.value
@@ -105,7 +105,7 @@ class Tasks extends React.Component {
                     placeholder={task.task}
                     name="task"
                     value={this.state.newTask.task}
-                    onChange={this.handleInput}
+                    onChange={this.handleEditInput}
                   />
                 ) : (
                   <li key={task.id}>{task.task}</li>
