@@ -102,12 +102,19 @@ ul {
   text-align: start;
 }
 
-li {
+.todo {
   background: #404040;
   padding: 2% 4%;
   margin: 2%;
   border-radius: 5px;
   color: #d18037;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.far:hover {
+  cursor: pointer;
 }
 
 .add-new-container {

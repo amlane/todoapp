@@ -31,13 +31,33 @@ class Tasks extends React.Component {
       });
   };
 
+  deleteTask = id => {
+    axiosWithAuth()
+      .delete(`http://localhost:4700/tasks/${id}`)
+      .then(res => {
+        console.log(res);
+        this.getData();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div>
         <h3>What do you need to do today, {this.state.user}?</h3>
         <ul>
           {this.state.tasks.map(task => {
-            return <li key={task.id}>{task.task}</li>;
+            return (
+              <li key={task.id} className="todo">
+                {task.task}{" "}
+                <i
+                  className="far fa-trash-alt"
+                  onClick={() => this.deleteTask(task.id)}
+                />
+              </li>
+            );
           })}
         </ul>
         <AddTask getData={this.getData} />
