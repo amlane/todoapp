@@ -7,11 +7,17 @@ import "../App.scss";
 class Tasks extends React.Component {
   state = {
     user: "",
-    tasks: []
+    tasks: [],
+    id: null,
+    task: "",
+    user_id: null
   };
 
   componentDidMount() {
     this.getData();
+    this.setState({
+      user_id: localStorage.getItem("user_id")
+    });
   }
 
   getData = () => {
@@ -35,8 +41,39 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .delete(`http://localhost:4700/tasks/${id}`)
       .then(res => {
-        console.log(res);
         this.getData();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  startEdit = id => {
+    this.setState(
+      {
+        id: id
+      },
+      () => console.log(this.state.id)
+    );
+  };
+
+  handleInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  editTask = (id, updatedTask) => {
+    console.log("edited", this.state.task, this.state.user_id);
+    axiosWithAuth()
+      .put(`http://localhost:4700/tasks/${id}`, updatedTask)
+      .then(res => {
+        this.setState(
+          {
+            id: null
+          },
+          () => this.getData()
+        );
       })
       .catch(err => {
         console.log(err);
@@ -50,13 +87,38 @@ class Tasks extends React.Component {
         <ul>
           {this.state.tasks.map(task => {
             return (
-              <li key={task.id} className="todo">
-                {task.task}{" "}
-                <i
-                  className="far fa-trash-alt"
-                  onClick={() => this.deleteTask(task.id)}
-                />
-              </li>
+              <div className="todo">
+                {this.state.id && this.state.id === task.id ? (
+                  <input
+                    placeholder={task.task}
+                    name="task"
+                    value={this.state.task}
+                    onChange={this.handleInput}
+                  />
+                ) : (
+                  <li key={task.id}>{task.task}</li>
+                )}
+                <div>
+                  <i
+                    className="fas fa-pencil-alt"
+                    onClick={() => this.startEdit(task.id)}
+                  />{" "}
+                  <button
+                    onClick={() =>
+                      this.editTask(
+                        task.id,
+                        (this.state.task, this.state.user_id)
+                      )
+                    }
+                  >
+                    S
+                  </button>
+                  <i
+                    className="far fa-trash-alt"
+                    onClick={() => this.deleteTask(task.id)}
+                  />
+                </div>
+              </div>
             );
           })}
         </ul>
