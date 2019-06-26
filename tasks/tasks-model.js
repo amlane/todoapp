@@ -13,7 +13,7 @@ function getTasks() {
 }
 
 function addTask(task) {
-  return db("tasks").insert(task);
+  return db("tasks").insert(task, "id");
 }
 
 function getTasksById(id) {

@@ -32,8 +32,10 @@
 - [x] Create React App
 - [x] Set up new user and login
 - [x] Set up to do list display
-- [ ] Set up create new to do page
-- [ ] Add edit/delete to do feature
+- [x] Set up create new to do page
+- [x] Add delete to do feature
+- [x] Add edit to do feature
+- [ ] Add a logout
 - [ ] add clear completed/show completed/delete completed feature
 - [ ] Create design file in Figma
 - [ ] style app
