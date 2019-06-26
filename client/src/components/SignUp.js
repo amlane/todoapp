@@ -17,9 +17,10 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    // const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
     axios
-      .post("http://localhost:4700/auth/register", this.state)
+      .post(`${prodURL}/auth/register`, this.state)
       .then(res => {
         // console.log(res);
         localStorage.setItem("token", res.data.token);
