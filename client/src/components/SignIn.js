@@ -17,7 +17,7 @@ class SignIn extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const devURL = "http://localhost:4700/";
+    // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axios
       .post(`${prodURL}/auth/login`, this.state)

@@ -25,7 +25,7 @@ class Tasks extends React.Component {
   }
 
   getData = () => {
-    const devURL = "http://localhost:4700/";
+    // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     const userId = localStorage.getItem("user_id");
     axiosWithAuth()
@@ -43,7 +43,7 @@ class Tasks extends React.Component {
   };
 
   deleteTask = id => {
-    const devURL = "http://localhost:4700/";
+    // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .delete(`${prodURL}/tasks/${id}`)
@@ -76,7 +76,7 @@ class Tasks extends React.Component {
 
   editTask = (updatedTask, id) => {
     console.log("new task", updatedTask);
-    const devURL = "http://localhost:4700/";
+    // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
@@ -111,6 +111,7 @@ class Tasks extends React.Component {
                     name="task"
                     value={this.state.newTask.task}
                     onChange={this.handleEditInput}
+                    required
                   />
                 ) : (
                   <li key={task.id}>{task.task}</li>
