@@ -44,4 +44,4 @@
 
 - [ ] Deploy back-end on heroku using postgres
 - [ ] Deploy front-end on netlify
-- [ ] Test production (maybe lol)
+- [ ] Unit testing (maybe lol)
