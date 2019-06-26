@@ -25,10 +25,11 @@ class Tasks extends React.Component {
   }
 
   getData = () => {
+    const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
     const userId = localStorage.getItem("user_id");
-
     axiosWithAuth()
-      .get(`http://localhost:4700/users/${userId}/tasks`)
+      .get(`${prodURL}/users/${userId}/tasks`)
       .then(res => {
         console.log(res);
         this.setState({
@@ -42,8 +43,10 @@ class Tasks extends React.Component {
   };
 
   deleteTask = id => {
+    const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
-      .delete(`http://localhost:4700/tasks/${id}`)
+      .delete(`${prodURL}/tasks/${id}`)
       .then(res => {
         this.getData();
       })
@@ -73,8 +76,10 @@ class Tasks extends React.Component {
 
   editTask = (updatedTask, id) => {
     console.log("new task", updatedTask);
+    const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
-      .put(`http://localhost:4700/tasks/${id}`, updatedTask)
+      .put(`${prodURL}/tasks/${id}`, updatedTask)
       .then(res => {
         console.log(res);
         this.setState(

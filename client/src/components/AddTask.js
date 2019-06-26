@@ -11,8 +11,10 @@ class AddTask extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
-      .post("http://localhost:4700/tasks", this.state)
+      .post(`${prodURL}/tasks`, this.state)
       .then(res => {
         console.log(res);
         this.setState(
