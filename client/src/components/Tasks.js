@@ -89,7 +89,10 @@ class Tasks extends React.Component {
         console.log(res);
         this.setState(
           {
-            id: null
+            id: null,
+            newTask: {
+              task: ""
+            }
           },
           () => this.getData()
         );
@@ -106,6 +109,7 @@ class Tasks extends React.Component {
   };
 
   render() {
+    console.log("sup", this.state.id);
     return (
       <div className="task-page">
         <nav className="logout-nav">
@@ -121,8 +125,8 @@ class Tasks extends React.Component {
                   <input
                     className="edit-input"
                     name="task"
-                    defaultValue={task.task}
                     value={this.state.newTask.task}
+                    defaultValue={task.task}
                     onChange={this.handleEditInput}
                     required
                   />
