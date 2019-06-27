@@ -1,14 +1,14 @@
 import React from "react";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
-
-import "../App.scss";
-
+import "../styles/Tasks.scss";
 class AddTask extends React.Component {
-  state = {
-    task: "",
-    user_id: localStorage.getItem("user_id")
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      task: "",
+      user_id: localStorage.getItem("user_id")
+    };
+  }
   handleSubmit = e => {
     e.preventDefault();
     // const devURL = "http://localhost:4700/";
@@ -37,19 +37,17 @@ class AddTask extends React.Component {
 
   render() {
     return (
-      <div>
-        add a new to do
-        <form className="add-new-container" onSubmit={this.handleSubmit}>
-          <input
-            className="add-new-task"
-            name="task"
-            value={this.state.task}
-            onChange={this.handleInput}
-            required
-          />
-          <button className="add-btn">+</button>
-        </form>
-      </div>
+      <form className="add-new-container" onSubmit={this.handleSubmit}>
+        <input
+          className="add-new-task"
+          name="task"
+          value={this.state.task}
+          onChange={this.handleInput}
+          placeholder={`What do you need to do today, ${this.props.user}?`}
+          required
+        />
+        <button className="add-btn">+</button>
+      </form>
     );
   }
 }
