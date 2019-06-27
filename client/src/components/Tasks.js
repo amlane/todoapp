@@ -89,10 +89,7 @@ class Tasks extends React.Component {
         console.log(res);
         this.setState(
           {
-            id: null,
-            newTask: {
-              task: ""
-            }
+            id: null
           },
           () => this.getData()
         );
