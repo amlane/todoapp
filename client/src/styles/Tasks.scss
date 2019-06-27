@@ -16,6 +16,9 @@
 }
 
 .task-page {
+  ul {
+    list-style-type: none;
+  }
   .todo {
     background: #242424;
     border: 1px solid #6e6e6e;
@@ -62,7 +65,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 400px;
 
   .add-new-task {
     width: 300px;
