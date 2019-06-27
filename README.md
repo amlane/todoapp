@@ -35,13 +35,13 @@
 - [x] Set up create new to do page
 - [x] Add delete to do feature
 - [x] Add edit to do feature
-- [ ] Add a logout
-- [ ] add clear completed/show completed/delete completed feature
-- [ ] Create design file in Figma
+- [x] Add a logout
+- [ ] add completed feature
+- [x] Create design file in Figma
 - [ ] style app
 
 ## Final Steps
 
-- [ ] Deploy back-end on heroku using postgres
-- [ ] Deploy front-end on netlify
+- [x] Deploy back-end on heroku using postgres
+- [x] Deploy front-end on netlify
 - [ ] Unit testing (maybe lol)
