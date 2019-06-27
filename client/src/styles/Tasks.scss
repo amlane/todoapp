@@ -21,7 +21,7 @@
   }
   .todo {
     background: #242424;
-    border: 1px solid #6e6e6e;
+    border-bottom: 1px solid #6e6e6e;
     height: auto;
     display: flex;
     justify-content: space-between;
@@ -29,6 +29,7 @@
 
     &:first-child {
       margin-top: 20px;
+      border-top: 1px solid #6e6e6e;
     }
 
     li {
@@ -55,12 +56,20 @@
       font-size: 15px;
       padding: 5px;
       color: #1355ff;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .far {
+      color: #dc7210;
     }
   }
 }
 
 .add-new-container {
-  border: 1px solid #6e6e6e;
+  border-top: 1px solid #6e6e6e;
   position: fixed;
   bottom: 0;
   height: 55px;
