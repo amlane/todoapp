@@ -1,8 +1,8 @@
 import React from "react";
 import { axiosWithAuth } from "./auth/axiosWithAuth";
+import { withRouter } from "react-router-dom";
 import AddTask from "../components/AddTask";
-
-import "../App.scss";
+import "../styles/Tasks.scss";
 
 class Tasks extends React.Component {
   state = {
@@ -48,7 +48,12 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .delete(`${prodURL}/tasks/${id}`)
       .then(res => {
-        this.getData();
+        this.setState(
+          {
+            id: null
+          },
+          () => this.getData()
+        );
       })
       .catch(err => {
         console.log(err);
@@ -97,18 +102,29 @@ class Tasks extends React.Component {
       });
   };
 
+  logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    this.props.history.push("/");
+  };
+
   render() {
     return (
-      <div>
-        <h3>What do you need to do today, {this.state.user}?</h3>
+      <div className="task-page">
+        <nav className="logout-nav">
+          <button className="logout-btn" onClick={this.logout}>
+            logout
+          </button>
+        </nav>
         <ul>
           {this.state.tasks.map(task => {
             return (
               <div className="todo">
                 {this.state.id && this.state.id === task.id ? (
                   <input
-                    placeholder={task.task}
+                    className="edit-input"
                     name="task"
+                    defaultValue={task.task}
                     value={this.state.newTask.task}
                     onChange={this.handleEditInput}
                     required
@@ -116,7 +132,7 @@ class Tasks extends React.Component {
                 ) : (
                   <li key={task.id}>{task.task}</li>
                 )}
-                <div>
+                <div className="emoji-container">
                   <i
                     className="fas fa-pencil-alt"
                     onClick={
@@ -125,19 +141,21 @@ class Tasks extends React.Component {
                         : () => this.startEdit(task.id)
                     }
                   />{" "}
-                  <i
-                    className="far fa-trash-alt"
-                    onClick={() => this.deleteTask(task.id)}
-                  />
+                  {this.state.id && this.state.id === task.id ? (
+                    <i
+                      className="far fa-trash-alt"
+                      onClick={() => this.deleteTask(task.id)}
+                    />
+                  ) : null}
                 </div>
               </div>
             );
           })}
         </ul>
-        <AddTask getData={this.getData} />
+        <AddTask getData={this.getData} user={this.state.user} />
       </div>
     );
   }
 }
 
-export default Tasks;
+export default withRouter(Tasks);

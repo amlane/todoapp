@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import "../App.scss";
+import logo from "../images/logo.png";
+import "../styles/Auth.scss";
 
 class SignIn extends React.Component {
   state = {
@@ -34,7 +35,10 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <section className="App-header">
+      <div className="auth-page">
+        <header className="login-nav">
+          <img src={logo} alt="" />
+        </header>
         <form onSubmit={this.handleSubmit} className="login-form">
           <h2>Log In</h2>
           <div className="input-container">
@@ -60,13 +64,13 @@ class SignIn extends React.Component {
             />
           </div>
           <button type="submit" className="signin-btn">
-            Log In
+            Submit
           </button>
           <p className="new-user-signup">
             Not a user yet? <NavLink to="/signup">Sign Up</NavLink>
           </p>
         </form>
-      </section>
+      </div>
     );
   }
 }

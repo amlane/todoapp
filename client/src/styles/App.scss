@@ -1,0 +1,18 @@
+.App {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  color: #1355ff;
+  text-decoration: none;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
