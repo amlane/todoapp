@@ -29,7 +29,7 @@ class SignIn extends React.Component {
         this.props.history.push("/tasks");
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response);
       });
   };
 

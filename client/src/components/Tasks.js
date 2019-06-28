@@ -80,7 +80,7 @@ class Tasks extends React.Component {
   };
 
   editTask = (updatedTask, id) => {
-    console.log("new task", updatedTask);
+    // console.log("new task", updatedTask);
     // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
@@ -109,10 +109,10 @@ class Tasks extends React.Component {
   };
 
   render() {
-    console.log("sup", this.state.id);
     return (
       <div className="task-page">
         <nav className="logout-nav">
+          <h3>Let's accomplish your goals, {this.state.user}.</h3>
           <button className="logout-btn" onClick={this.logout}>
             logout
           </button>
@@ -131,7 +131,10 @@ class Tasks extends React.Component {
                     required
                   />
                 ) : (
-                  <li key={task.id}>{task.task}</li>
+                  <div className="todo-container">
+                    <div className="completed" />
+                    <li key={task.id}>{task.task}</li>
+                  </div>
                 )}
                 <div className="emoji-container">
                   <i

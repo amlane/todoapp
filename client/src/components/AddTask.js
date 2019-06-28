@@ -44,6 +44,7 @@ class AddTask extends React.Component {
           value={this.state.task}
           onChange={this.handleInput}
           placeholder="add new task..."
+          maxLength="30"
           required
         />
         <button className="add-btn">+</button>
