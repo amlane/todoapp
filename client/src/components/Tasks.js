@@ -87,15 +87,12 @@ class Tasks extends React.Component {
       .put(`${prodURL}/tasks/${id}`, updatedTask)
       .then(res => {
         console.log(res);
-        this.setState(
-          {
-            id: null,
-            newTask: {
-              task: ""
-            }
-          },
-          () => this.getData()
-        );
+        this.setState({
+          id: null,
+          newTask: {
+            task: ""
+          }
+        });
       })
       .catch(err => {
         console.log(err.response);
@@ -128,6 +125,7 @@ class Tasks extends React.Component {
                     value={this.state.newTask.task}
                     defaultValue={task.task}
                     onChange={this.handleEditInput}
+                    maxLength="160"
                     required
                   />
                 ) : (

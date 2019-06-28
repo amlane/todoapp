@@ -50,6 +50,7 @@ class SignUp extends React.Component {
               required
               name="username"
               onChange={this.handleInput}
+              maxLength="16"
             />
           </div>
           <div className="input-container">
@@ -61,6 +62,7 @@ class SignUp extends React.Component {
               required
               name="password"
               onChange={this.handleInput}
+              maxLength="16"
             />
           </div>
           <button type="submit" className="signin-btn">
