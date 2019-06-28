@@ -43,7 +43,7 @@ class AddTask extends React.Component {
           name="task"
           value={this.state.task}
           onChange={this.handleInput}
-          placeholder={`What do you need to do today, ${this.props.user}?`}
+          placeholder="add new task..."
           required
         />
         <button className="add-btn">+</button>

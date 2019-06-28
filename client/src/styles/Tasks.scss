@@ -26,6 +26,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0;
+    font-size: 18px;
 
     &:first-child {
       margin-top: 20px;
@@ -49,11 +51,11 @@
 
   .emoji-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
 
     .far,
     .fas {
-      font-size: 15px;
+      font-size: 30px;
       padding: 5px;
       color: #1355ff;
 
@@ -69,38 +71,43 @@
 }
 
 .add-new-container {
-  border-top: 1px solid #6e6e6e;
   position: fixed;
   bottom: 0;
-  height: 55px;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  max-width: 400px;
 
   .add-new-task {
-    width: 300px;
-    border: 1px solid transparent;
-    background: transparent;
-    padding: 5px;
-    color: #dc7210;
-    font-size: 14px;
+    width: 100vw;
+    border-top: 1px solid #6e6e6e;
+    border-bottom: 1px solid #6e6e6e;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    background: #2c2c2c;
+    padding: 15px 5px;
+    color: #14ae1a;
+    font-size: 16px;
 
     &::placeholder {
-      color: #14ae1a;
-      font-size: 14px;
+      color: #6e6e6e;
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      width: 100vw;
     }
   }
 
   .add-btn {
-    height: 40px;
-    width: 40px;
-    margin: 5px;
-    border-radius: 50%;
     border: 1px solid #dc7210;
+    border-radius: 5px;
     background: #dc7210;
     color: #fafafa;
-    font-size: 24px;
+    font-size: 40px;
+    width: 95%;
+    padding: 4px 16px;
+    margin: 3% 0;
   }
 }
