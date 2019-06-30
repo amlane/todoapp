@@ -13,7 +13,9 @@ class Tasks extends React.Component {
       task: "",
       user_id: null
     },
-    completed: false
+    completedTask: {
+      completed: null
+    }
   };
 
   componentDidMount() {
@@ -103,6 +105,35 @@ class Tasks extends React.Component {
       });
   };
 
+  markComplete = id => {
+    this.setState(
+      {
+        completedTask: {
+          completed: true
+        }
+      },
+      () => this.toggleComplete(this.state.completedTask, id)
+    );
+  };
+
+  toggleComplete = (completedTask, id) => {
+    // const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
+    axiosWithAuth()
+      .put(`${prodURL}/tasks/${id}`, completedTask)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          completedTask: {
+            completed: null
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+
   logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user_id");
@@ -134,7 +165,11 @@ class Tasks extends React.Component {
                   />
                 ) : (
                   <div className="todo-container">
-                    <input type="checkbox" className="completed" />
+                    <input
+                      type="checkbox"
+                      className="completed"
+                      onClick={() => this.markComplete(task.id)}
+                    />
                     <li key={task.id}>{task.task}</li>
                   </div>
                 )}
