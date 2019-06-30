@@ -12,7 +12,8 @@ class Tasks extends React.Component {
     newTask: {
       task: "",
       user_id: null
-    }
+    },
+    completed: false
   };
 
   componentDidMount() {
@@ -87,12 +88,15 @@ class Tasks extends React.Component {
       .put(`${prodURL}/tasks/${id}`, updatedTask)
       .then(res => {
         console.log(res);
-        this.setState({
-          id: null,
-          newTask: {
-            task: ""
-          }
-        });
+        this.setState(
+          {
+            id: null,
+            newTask: {
+              task: ""
+            }
+          },
+          () => this.getData()
+        );
       })
       .catch(err => {
         console.log(err.response);
@@ -130,7 +134,7 @@ class Tasks extends React.Component {
                   />
                 ) : (
                   <div className="todo-container">
-                    <div className="completed" />
+                    <input type="checkbox" className="completed" />
                     <li key={task.id}>{task.task}</li>
                   </div>
                 )}
@@ -154,7 +158,7 @@ class Tasks extends React.Component {
             );
           })}
         </ul>
-        <AddTask getData={this.getData} user={this.state.user} />
+        <AddTask getData={this.getData} />
       </div>
     );
   }

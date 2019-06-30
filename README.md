@@ -25,7 +25,6 @@
 - [x] add middleware to protect any endpoint that requires an ID
 - [x] add middleware to protect routes that require login
 - [x] Create a postman doc for endpoints to update README with
-- [ ] Update README with endpoints from Postman
 
 ## Next Steps
 
@@ -36,12 +35,18 @@
 - [x] Add delete to do feature
 - [x] Add edit to do feature
 - [x] Add a logout
-- [ ] add completed feature
 - [x] Create design file in Figma
-- [ ] style app
+- [x] style app
 
 ## Final Steps
 
 - [x] Deploy back-end on heroku using postgres
 - [x] Deploy front-end on netlify
+
+## Technical Debt Checklist
+
+- [ ] add completed feature
+- [ ] update and add error messages for login/register (update invalid creds to invalid un/pw)
+- [ ] add loading spinner on login/register button
+- [ ] Update README with endpoints for API
 - [ ] Unit testing (maybe lol)

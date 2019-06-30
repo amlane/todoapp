@@ -6,22 +6,28 @@ import "../styles/Auth.scss";
 
 class SignIn extends React.Component {
   state = {
-    username: "",
-    password: ""
+    creds: {
+      username: "",
+      password: ""
+    }
   };
 
   handleInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log("creds", this.state.creds);
     // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axios
-      .post(`${prodURL}/auth/login`, this.state)
+      .post(`${prodURL}/auth/login`, this.state.creds)
       .then(res => {
         // console.log(res);
         localStorage.setItem("token", res.data.token);
@@ -45,7 +51,7 @@ class SignIn extends React.Component {
             <label>username</label>
             <input
               className="auth-input"
-              value={this.state.username}
+              value={this.state.creds.username}
               type="text"
               required
               name="username"
@@ -57,7 +63,7 @@ class SignIn extends React.Component {
             <label>password</label>
             <input
               className="auth-input"
-              value={this.state.password}
+              value={this.state.creds.password}
               type="password"
               required
               name="password"
