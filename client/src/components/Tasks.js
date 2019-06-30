@@ -12,7 +12,8 @@ class Tasks extends React.Component {
     newTask: {
       task: "",
       user_id: null
-    }
+    },
+    completed: false
   };
 
   componentDidMount() {
@@ -128,11 +129,12 @@ class Tasks extends React.Component {
                     value={this.state.newTask.task}
                     defaultValue={task.task}
                     onChange={this.handleEditInput}
+                    maxLength="160"
                     required
                   />
                 ) : (
                   <div className="todo-container">
-                    <div className="completed" />
+                    <input type="checkbox" className="completed" />
                     <li key={task.id}>{task.task}</li>
                   </div>
                 )}
@@ -156,7 +158,7 @@ class Tasks extends React.Component {
             );
           })}
         </ul>
-        <AddTask getData={this.getData} user={this.state.user} />
+        <AddTask getData={this.getData} />
       </div>
     );
   }
