@@ -34,7 +34,6 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .get(`${prodURL}/users/${userId}/tasks`)
       .then(res => {
-        console.log(res);
         this.setState({
           user: res.data.username,
           tasks: res.data.tasks
@@ -89,7 +88,6 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
       .then(res => {
-        console.log(res);
         this.setState(
           {
             id: null,
@@ -106,10 +104,23 @@ class Tasks extends React.Component {
   };
 
   markComplete = id => {
+    console.log("mark true");
     this.setState(
       {
         completedTask: {
           completed: true
+        }
+      },
+      () => this.toggleComplete(this.state.completedTask, id)
+    );
+  };
+
+  markIncomplete = id => {
+    console.log("mark false");
+    this.setState(
+      {
+        completedTask: {
+          completed: false
         }
       },
       () => this.toggleComplete(this.state.completedTask, id)
@@ -122,7 +133,6 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, completedTask)
       .then(res => {
-        console.log(res);
         this.setState({
           completedTask: {
             completed: null
@@ -167,10 +177,19 @@ class Tasks extends React.Component {
                   <div className="todo-container">
                     <input
                       type="checkbox"
-                      className="completed"
-                      onClick={() => this.markComplete(task.id)}
+                      className="checkbox"
+                      onClick={
+                        task.completed
+                          ? () => this.markIncomplete(task.id)
+                          : () => this.markComplete(task.id)
+                      }
                     />
-                    <li key={task.id}>{task.task}</li>
+                    <li
+                      key={task.id}
+                      // className={`task.completed ? completed : incomplete`}
+                    >
+                      {task.task}
+                    </li>
                   </div>
                 )}
                 <div className="emoji-container">

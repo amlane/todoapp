@@ -45,7 +45,7 @@
 
 ## Technical Debt Checklist
 
-- [ ] add completed feature
+- [x] add completed feature
 - [ ] update and add error messages for login/register (update invalid creds to invalid un/pw)
 - [ ] add loading spinner on login/register button
 - [ ] Update README with endpoints for API
