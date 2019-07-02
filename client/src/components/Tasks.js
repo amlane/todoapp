@@ -12,8 +12,7 @@ class Tasks extends React.Component {
     newTask: {
       task: "",
       user_id: null
-    },
-    completed: false
+    }
   };
 
   componentDidMount() {
@@ -32,7 +31,6 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .get(`${prodURL}/users/${userId}/tasks`)
       .then(res => {
-        console.log(res);
         this.setState({
           user: res.data.username,
           tasks: res.data.tasks
@@ -87,7 +85,6 @@ class Tasks extends React.Component {
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
       .then(res => {
-        console.log(res);
         this.setState(
           {
             id: null,
@@ -98,6 +95,26 @@ class Tasks extends React.Component {
           () => this.getData()
         );
       })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+
+  toggleComplete = (task, id) => {
+    // const devURL = "http://localhost:4700/";
+    const prodURL = "https://master-tasker.herokuapp.com";
+    axiosWithAuth()
+      .put(`${prodURL}/tasks/${id}`, {
+        ...task,
+        completed: !task.completed
+      })
+      .then(
+        res => {
+          // console.log(res);
+        },
+        () => this.getData(),
+        console.log("here", task.completed)
+      )
       .catch(err => {
         console.log(err.response);
       });
@@ -134,8 +151,17 @@ class Tasks extends React.Component {
                   />
                 ) : (
                   <div className="todo-container">
-                    <input type="checkbox" className="completed" />
-                    <li key={task.id}>{task.task}</li>
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      onClick={() => this.toggleComplete(task, task.id)}
+                    />
+                    <li
+                      key={task.id}
+                      // className={`task.completed ? completed : incomplete`}
+                    >
+                      {task.task}
+                    </li>
                   </div>
                 )}
                 <div className="emoji-container">
