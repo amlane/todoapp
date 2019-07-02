@@ -54,7 +54,8 @@
       margin: 10px;
       height: 20px;
       width: 20px;
-      border: 1px solid white;
+      border: 2px solid #dc7210;
+      border-radius: 50%;
 
       &:hover {
         cursor: pointer;
@@ -62,7 +63,7 @@
     }
 
     .checked {
-      background: green;
+      background: #dc7210;
     }
 
     .completed {
@@ -97,7 +98,7 @@
     .far,
     .fas {
       font-size: 30px;
-      padding: 5px;
+      padding: 15px;
       color: #1355ff;
 
       &:hover {
@@ -148,7 +149,7 @@
     color: #fafafa;
     font-size: 40px;
     width: 95%;
-    padding: 4px 16px;
-    margin: 1% 0;
+    padding: 10px 16px;
+    margin: 2% 0;
   }
 }
