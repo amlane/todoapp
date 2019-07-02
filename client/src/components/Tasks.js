@@ -12,9 +12,6 @@ class Tasks extends React.Component {
     newTask: {
       task: "",
       user_id: null
-    },
-    completedTask: {
-      completed: null
     }
   };
 
@@ -103,42 +100,21 @@ class Tasks extends React.Component {
       });
   };
 
-  markComplete = id => {
-    console.log("mark true");
-    this.setState(
-      {
-        completedTask: {
-          completed: true
-        }
-      },
-      () => this.toggleComplete(this.state.completedTask, id)
-    );
-  };
-
-  markIncomplete = id => {
-    console.log("mark false");
-    this.setState(
-      {
-        completedTask: {
-          completed: false
-        }
-      },
-      () => this.toggleComplete(this.state.completedTask, id)
-    );
-  };
-
-  toggleComplete = (completedTask, id) => {
+  toggleComplete = (task, id) => {
     // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
-      .put(`${prodURL}/tasks/${id}`, completedTask)
-      .then(res => {
-        this.setState({
-          completedTask: {
-            completed: null
-          }
-        });
+      .put(`${prodURL}/tasks/${id}`, {
+        ...task,
+        completed: !task.completed
       })
+      .then(
+        res => {
+          // console.log(res);
+        },
+        () => this.getData(),
+        console.log("here", task.completed)
+      )
       .catch(err => {
         console.log(err.response);
       });
@@ -178,11 +154,7 @@ class Tasks extends React.Component {
                     <input
                       type="checkbox"
                       className="checkbox"
-                      onClick={
-                        task.completed
-                          ? () => this.markIncomplete(task.id)
-                          : () => this.markComplete(task.id)
-                      }
+                      onClick={() => this.toggleComplete(task, task.id)}
                     />
                     <li
                       key={task.id}
