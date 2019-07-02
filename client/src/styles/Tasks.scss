@@ -54,6 +54,15 @@
       margin: 10px;
       height: 20px;
       width: 20px;
+      border: 1px solid white;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .checked {
+      background: green;
     }
 
     .completed {
