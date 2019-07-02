@@ -123,6 +123,7 @@ class Tasks extends React.Component {
   };
 
   render() {
+    console.log(this.state.tasks);
     return (
       <div className="task-page">
         <nav className="logout-nav">
@@ -132,55 +133,55 @@ class Tasks extends React.Component {
           </button>
         </nav>
         <ul>
-          {this.state.tasks.map(task => {
-            const checker = task.completed ? `checked` : null;
-            return (
-              <div className="todo">
-                {this.state.id && this.state.id === task.id ? (
-                  <input
-                    className="edit-input"
-                    name="task"
-                    value={this.state.newTask.task}
-                    defaultValue={task.task}
-                    onChange={this.handleEditInput}
-                    maxLength="160"
-                    required
-                  />
-                ) : (
-                  <div className="todo-container" key={task.id}>
-                    <div
-                      className={
-                        task.completed ? "checked checkbox" : `checkbox`
-                      }
-                      onClick={() => this.toggleComplete(task, task.id)}
-                    />
-                    <li
-                      // key={task.id}
-                      className={task.completed ? `completed` : null}
-                    >
-                      {task.task}
-                    </li>
-                  </div>
-                )}
-                <div className="emoji-container">
-                  <i
-                    className="fas fa-pencil-alt"
-                    onClick={
-                      this.state.id
-                        ? this.handleSubmit
-                        : () => this.startEdit(task.id)
-                    }
-                  />{" "}
+          {this.state.tasks
+            .sort(function(a, b) {
+              return b.id - a.id;
+            })
+            .map(task => {
+              return (
+                <div className="todo">
                   {this.state.id && this.state.id === task.id ? (
-                    <i
-                      className="far fa-trash-alt"
-                      onClick={() => this.deleteTask(task.id)}
+                    <input
+                      className="edit-input"
+                      name="task"
+                      value={this.state.newTask.task}
+                      defaultValue={task.task}
+                      onChange={this.handleEditInput}
+                      maxLength="160"
+                      required
                     />
-                  ) : null}
+                  ) : (
+                    <div className="todo-container" key={task.id}>
+                      <div
+                        className={
+                          task.completed ? "checked checkbox" : `checkbox`
+                        }
+                        onClick={() => this.toggleComplete(task, task.id)}
+                      />
+                      <li className={task.completed ? `completed` : null}>
+                        {task.task}
+                      </li>
+                    </div>
+                  )}
+                  <div className="emoji-container">
+                    <i
+                      className="fas fa-pencil-alt"
+                      onClick={
+                        this.state.id
+                          ? this.handleSubmit
+                          : () => this.startEdit(task.id)
+                      }
+                    />{" "}
+                    {this.state.id && this.state.id === task.id ? (
+                      <i
+                        className="far fa-trash-alt"
+                        onClick={() => this.deleteTask(task.id)}
+                      />
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </ul>
         <AddTask getData={this.getData} />
       </div>
