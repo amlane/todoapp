@@ -43,7 +43,7 @@ class SignUp extends React.Component {
           errorMsg:
             err.response.status === 400
               ? err.response.data.message
-              : err.response.data.detail
+              : `This username already exists`
         });
       });
   };
