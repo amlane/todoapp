@@ -135,7 +135,7 @@ class Tasks extends React.Component {
         <ul>
           {this.state.tasks
             .sort(function(a, b) {
-              return b.id - a.id;
+              return b.id - a.id; // keeps to dos from changing order when this.getData is invoked
             })
             .map(task => {
               return (
@@ -152,12 +152,14 @@ class Tasks extends React.Component {
                     />
                   ) : (
                     <div className="todo-container" key={task.id}>
-                      <div
-                        className={
-                          task.completed ? "checked checkbox" : `checkbox`
-                        }
-                        onClick={() => this.toggleComplete(task, task.id)}
-                      />
+                      <div>
+                        <div
+                          className={
+                            task.completed ? "checked checkbox" : `checkbox`
+                          }
+                          onClick={() => this.toggleComplete(task, task.id)}
+                        />
+                      </div>
                       <li className={task.completed ? `completed` : null}>
                         {task.task}
                       </li>
