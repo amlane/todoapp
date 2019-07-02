@@ -10,7 +10,8 @@ class SignIn extends React.Component {
       username: "",
       password: ""
     },
-    errorMsg: ""
+    errorMsg: "",
+    loading: false
   };
 
   handleInput = e => {
@@ -34,9 +35,15 @@ class SignIn extends React.Component {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.user.id);
         this.props.history.push("/tasks");
+        this.setState({
+          errorMsg: ""
+        });
       })
       .catch(err => {
         console.log(err.response);
+        this.setState({
+          errorMsg: err.response.data.message
+        });
       });
   };
 
@@ -72,6 +79,9 @@ class SignIn extends React.Component {
               maxLength="16"
             />
           </div>
+          {this.state.errorMsg !== "" ? (
+            <p className="error">{this.state.errorMsg}</p>
+          ) : null}
           <button type="submit" className="signin-btn">
             Submit
           </button>

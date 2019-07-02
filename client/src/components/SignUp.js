@@ -6,13 +6,19 @@ import "../styles/Auth.scss";
 
 class SignUp extends React.Component {
   state = {
-    username: "",
-    password: ""
+    creds: {
+      username: "",
+      password: ""
+    },
+    errorMsg: ""
   };
 
   handleInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
     });
   };
 
@@ -21,15 +27,24 @@ class SignUp extends React.Component {
     // const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axios
-      .post(`${prodURL}/auth/register`, this.state)
+      .post(`${prodURL}/auth/register`, this.state.creds)
       .then(res => {
         // console.log(res);
+        this.setState({
+          errorMsg: ""
+        });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.saved.id);
         this.props.history.push("/tasks");
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response, err.response.status);
+        this.setState({
+          errorMsg:
+            err.response.status === 400
+              ? err.response.data.message
+              : err.response.data.detail
+        });
       });
   };
 
@@ -45,9 +60,8 @@ class SignUp extends React.Component {
             <label>username</label>
             <input
               className="auth-input"
-              value={this.state.username}
+              value={this.state.creds.username}
               type="text"
-              required
               name="username"
               onChange={this.handleInput}
               maxLength="16"
@@ -57,14 +71,16 @@ class SignUp extends React.Component {
             <label>password</label>
             <input
               className="auth-input"
-              value={this.state.password}
+              value={this.state.creds.password}
               type="password"
-              required
               name="password"
               onChange={this.handleInput}
               maxLength="16"
             />
           </div>
+          {this.state.errorMsg !== "" ? (
+            <p className="error">{this.state.errorMsg}</p>
+          ) : null}
           <button type="submit" className="signin-btn">
             Submit
           </button>
