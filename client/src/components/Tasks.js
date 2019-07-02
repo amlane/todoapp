@@ -108,13 +108,9 @@ class Tasks extends React.Component {
         ...task,
         completed: !task.completed
       })
-      .then(
-        res => {
-          // console.log(res);
-        },
-        () => this.getData(),
-        console.log("here", task.completed)
-      )
+      .then(res => {
+        this.getData();
+      })
       .catch(err => {
         console.log(err.response);
       });
@@ -137,6 +133,7 @@ class Tasks extends React.Component {
         </nav>
         <ul>
           {this.state.tasks.map(task => {
+            const checker = task.completed ? `checked` : null;
             return (
               <div className="todo">
                 {this.state.id && this.state.id === task.id ? (
@@ -150,15 +147,16 @@ class Tasks extends React.Component {
                     required
                   />
                 ) : (
-                  <div className="todo-container">
-                    <input
-                      type="checkbox"
-                      className="checkbox"
+                  <div className="todo-container" key={task.id}>
+                    <div
+                      className={
+                        task.completed ? "checked checkbox" : `checkbox`
+                      }
                       onClick={() => this.toggleComplete(task, task.id)}
                     />
                     <li
-                      key={task.id}
-                      // className={`task.completed ? completed : incomplete`}
+                      // key={task.id}
+                      className={task.completed ? `completed` : null}
                     >
                       {task.task}
                     </li>
