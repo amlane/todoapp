@@ -9,7 +9,8 @@ class SignIn extends React.Component {
     creds: {
       username: "",
       password: ""
-    }
+    },
+    errorMsg: ""
   };
 
   handleInput = e => {
