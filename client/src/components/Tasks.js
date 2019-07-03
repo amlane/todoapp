@@ -81,7 +81,7 @@ class Tasks extends React.Component {
 
   editTask = (updatedTask, id) => {
     // const devURL = "http://localhost:4700/";
-    if (this.state.task === "") return;
+    // if (this.state.task === "") return;
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
@@ -166,7 +166,7 @@ class Tasks extends React.Component {
                       </li>
                     </div>
                   )}
-                  <div className="emoji-container">
+                  <div className="btn-container">
                     <button
                       className="edit"
                       onClick={
@@ -175,7 +175,7 @@ class Tasks extends React.Component {
                           : () => this.startEdit(task.id)
                       }
                     >
-                      edit
+                      {this.state.id ? `save` : `edit`}
                     </button>
                     {this.state.id && this.state.id === task.id ? (
                       <button
