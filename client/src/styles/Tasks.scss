@@ -71,11 +71,6 @@
       font-style: italic;
     }
 
-    .incomplete {
-      text-decoration: none;
-      font-style: normal;
-    }
-
     li {
       padding: 10px;
     }
@@ -95,19 +90,21 @@
     display: flex;
     flex-direction: row-reverse;
 
-    .far,
-    .fas {
-      font-size: 30px;
-      padding: 15px;
-      color: #1355ff;
+    .delete,
+    .edit {
+      padding: 3px 8px;
 
       &:hover {
         cursor: pointer;
       }
     }
 
-    .far {
-      color: #dc7210;
+    .delete {
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 50%;
+      margin-right: 5px;
     }
   }
 }
