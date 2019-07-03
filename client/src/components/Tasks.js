@@ -88,18 +88,18 @@ class Tasks extends React.Component {
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
-      .then(
-        res => {
-          this.setState({
+      .then(res => {
+        this.setState(
+          {
             id: null,
             newTask: {
               task: ""
             },
             editInput: ""
-          });
-        },
-        () => this.getData()
-      )
+          },
+          () => this.getData()
+        );
+      })
       .catch(err => {
         console.log(err.response);
       });
