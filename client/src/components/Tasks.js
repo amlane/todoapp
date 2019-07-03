@@ -12,7 +12,8 @@ class Tasks extends React.Component {
     newTask: {
       task: "",
       user_id: null
-    }
+    },
+    editInput: ""
   };
 
   componentDidMount() {
@@ -59,9 +60,11 @@ class Tasks extends React.Component {
       });
   };
 
-  startEdit = id => {
+  startEdit = (task, id) => {
     this.setState({
-      id: id
+      ...task,
+      id: id,
+      editInput: task.task
     });
   };
 
@@ -85,17 +88,18 @@ class Tasks extends React.Component {
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
-      .then(res => {
-        this.setState(
-          {
+      .then(
+        res => {
+          this.setState({
             id: null,
             newTask: {
               task: ""
-            }
-          },
-          () => this.getData()
-        );
-      })
+            },
+            editInput: ""
+          });
+        },
+        () => this.getData()
+      )
       .catch(err => {
         console.log(err.response);
       });
@@ -146,7 +150,7 @@ class Tasks extends React.Component {
                       className="edit-input"
                       name="task"
                       value={this.state.newTask.task}
-                      defaultValue={task.task}
+                      placeholder={this.state.editInput}
                       onChange={this.handleEditInput}
                       maxLength="160"
                       required
@@ -172,7 +176,7 @@ class Tasks extends React.Component {
                       onClick={
                         this.state.id
                           ? this.handleSubmit
-                          : () => this.startEdit(task.id)
+                          : () => this.startEdit(task, task.id)
                       }
                     >
                       {this.state.id ? `save` : `edit`}
