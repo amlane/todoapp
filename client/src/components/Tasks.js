@@ -68,6 +68,7 @@ class Tasks extends React.Component {
   handleEditInput = e => {
     this.setState({
       newTask: {
+        ...this.state.newTask,
         [e.target.name]: e.target.value
       }
     });
@@ -79,8 +80,8 @@ class Tasks extends React.Component {
   };
 
   editTask = (updatedTask, id) => {
-    // console.log("new task", updatedTask);
     // const devURL = "http://localhost:4700/";
+    if (this.state.task === "") return;
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, updatedTask)
@@ -166,19 +167,23 @@ class Tasks extends React.Component {
                     </div>
                   )}
                   <div className="emoji-container">
-                    <i
-                      className="fas fa-pencil-alt"
+                    <button
+                      className="edit"
                       onClick={
                         this.state.id
                           ? this.handleSubmit
                           : () => this.startEdit(task.id)
                       }
-                    />{" "}
+                    >
+                      edit
+                    </button>
                     {this.state.id && this.state.id === task.id ? (
-                      <i
-                        className="far fa-trash-alt"
+                      <button
+                        className="delete"
                         onClick={() => this.deleteTask(task.id)}
-                      />
+                      >
+                        x
+                      </button>
                     ) : null}
                   </div>
                 </div>

@@ -39,7 +39,7 @@ router.put(
   "/:id",
   restricted,
   verifyTaskId,
-  // validateTaskContent,
+  validateTaskContent,
   (req, res) => {
     const id = req.params.id;
     const changes = req.body;
