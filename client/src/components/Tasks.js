@@ -26,7 +26,7 @@ class Tasks extends React.Component {
   }
 
   getData = () => {
-    // const devURL = "http://localhost:4700/";
+    const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     const userId = localStorage.getItem("user_id");
     axiosWithAuth()
@@ -43,7 +43,7 @@ class Tasks extends React.Component {
   };
 
   deleteTask = id => {
-    // const devURL = "http://localhost:4700/";
+    const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .delete(`${prodURL}/tasks/${id}`)
@@ -64,7 +64,10 @@ class Tasks extends React.Component {
     this.setState({
       ...task,
       id: id,
-      editInput: task.task
+      editInput: task.task,
+      newTask: {
+        task: task.task
+      }
     });
   };
 
@@ -83,7 +86,7 @@ class Tasks extends React.Component {
   };
 
   editTask = (updatedTask, id) => {
-    // const devURL = "http://localhost:4700/";
+    const devURL = "http://localhost:4700/";
     // if (this.state.task === "") return;
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
@@ -106,7 +109,7 @@ class Tasks extends React.Component {
   };
 
   toggleComplete = (task, id) => {
-    // const devURL = "http://localhost:4700/";
+    const devURL = "http://localhost:4700/";
     const prodURL = "https://master-tasker.herokuapp.com";
     axiosWithAuth()
       .put(`${prodURL}/tasks/${id}`, {
@@ -139,10 +142,11 @@ class Tasks extends React.Component {
         </nav>
         <ul>
           {this.state.tasks
-            .sort(function(a, b) {
+            .sort(function (a, b) {
               return b.id - a.id; // keeps to dos from changing order when this.getData is invoked
             })
             .map(task => {
+              console.log("here", task);
               return (
                 <div className="todo">
                   {this.state.id && this.state.id === task.id ? (
@@ -150,26 +154,25 @@ class Tasks extends React.Component {
                       className="edit-input"
                       name="task"
                       value={this.state.newTask.task}
-                      placeholder={this.state.editInput}
                       onChange={this.handleEditInput}
                       maxLength="160"
                       required
                     />
                   ) : (
-                    <div className="todo-container" key={task.id}>
-                      <div>
-                        <div
-                          className={
-                            task.completed ? "checked checkbox" : `checkbox`
-                          }
-                          onClick={() => this.toggleComplete(task, task.id)}
-                        />
+                      <div className="todo-container" key={task.id}>
+                        <div>
+                          <div
+                            className={
+                              task.completed ? "checked checkbox" : `checkbox`
+                            }
+                            onClick={() => this.toggleComplete(task, task.id)}
+                          />
+                        </div>
+                        <li className={task.completed ? `completed` : null}>
+                          {task.task}
+                        </li>
                       </div>
-                      <li className={task.completed ? `completed` : null}>
-                        {task.task}
-                      </li>
-                    </div>
-                  )}
+                    )}
                   <div className="btn-container">
                     <button
                       className="edit"
